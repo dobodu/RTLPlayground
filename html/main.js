@@ -314,10 +314,10 @@ function loadPortConfig() {
         tr.innerHTML = `
           <td><strong>Port ${portNum}</strong></td>
           <td class="cb-cell"><input type="checkbox" id="ilim_${portNum}" ${p.iLimited?'checked':''} onchange="toggleBW(${portNum}, 'i')"></td>
-          <td id="td_ibw_${portNum}"><input type="number" id="ibw_${portNum}" style="width:80px;" value="${p.iLimited?iBW:''}" placeholder="${p.iLimited?'':'UNLIMITED'}" ${p.iLimited?'':'disabled'} oninput="document.getElementById('bwbtn_${portNum}').disabled=false"></td>
+          <td id="td_ibw_${portNum}"><input type="number" id="ibw_${portNum}" style="width:110px;" value="${p.iLimited?iBW:''}" placeholder="${p.iLimited?'':'UNLIMITED'}" ${p.iLimited?'':'disabled'} oninput="document.getElementById('bwbtn_${portNum}').disabled=false"></td>
           <td class="cb-cell"><input type="checkbox" id="ifc_${portNum}" ${p.iFC?'checked':''} ${p.iLimited?'':'disabled'} onchange="document.getElementById('bwbtn_${portNum}').disabled=false"></td>
           <td class="cb-cell"><input type="checkbox" id="elim_${portNum}" ${p.eLimited?'checked':''} onchange="toggleBW(${portNum}, 'e')"></td>
-          <td id="td_ebw_${portNum}"><input type="number" id="ebw_${portNum}" style="width:80px;" value="${p.eLimited?eBW:''}" placeholder="${p.eLimited?'':'UNLIMITED'}" ${p.eLimited?'':'disabled'} oninput="document.getElementById('bwbtn_${portNum}').disabled=false"></td>
+          <td id="td_ebw_${portNum}"><input type="number" id="ebw_${portNum}" style="width:110px;" value="${p.eLimited?eBW:''}" placeholder="${p.eLimited?'':'UNLIMITED'}" ${p.eLimited?'':'disabled'} oninput="document.getElementById('bwbtn_${portNum}').disabled=false"></td>
           <td><button class="btn" id="bwbtn_${portNum}" style="padding: 4px 8px; font-size: 11px;" onclick="applyBandwidth(${portNum})" disabled>Apply</button></td>
         `;
         tbody.appendChild(tr);
@@ -611,6 +611,7 @@ function getKey(line) {
 }
 
 function parseConf(s) {
+  let configuration = [];
   var cleanString = s.replace(/[^\x09\x0A\x0D\x20-\x7E]/g, ''); 
   var a = cleanString.split(/\r\n|\n/);
   
